@@ -1,0 +1,4 @@
+interface:
+  display_name: "Salable Monetization"
+  short_description: "Monetize apps on beta with pricing, gating, and billing views"
+  default_prompt: "Use $salable-monetization to monetize an app on beta.salable.app 2.0 by first confirming app authentication; if auth is missing, exit and recommend stack-specific auth options (Auth.js first for Next.js), otherwise proceed with pricing, entitlement gating, and subscription management views, with the pricing/paywall route kept public and checkout/account actions authenticated."
