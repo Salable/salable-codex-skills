@@ -16,7 +16,7 @@ Add the Salable MCP server with a single command:
 
 ```bash
 codex mcp add salable \
-  --url https://beta.salable.app/api/mcp \
+  --url https://salable.app/api/mcp \
   --bearer-token-env-var SALABLE_API_KEY
 ```
 
