@@ -1,28 +1,28 @@
 ---
-name: salable-monetization
-description: Monetize apps on beta.salable.app 2.0 using Salable MCP tools and beta OpenAPI contracts. Use when creating or modifying products, plans, line items, prices, currency options, tiers, and entitlements, including flat-rate, per-seat, and metered packaging. For monetize/monetise requests, default scope includes public pricing views, entitlement-based feature gating, and subscription management views.
+name: salable-monetisation
+description: Monetize apps on salable.app using Salable MCP tools and beta OpenAPI contracts. Use when creating or modifying products, plans, line items, prices, currency options, tiers, and entitlements, including flat-rate, per-seat, and metered packaging. For monetize/monetise requests, default scope includes public pricing views, entitlement-based feature gating, and subscription management views.
 ---
 
 # Salable Monetization
 
-Design Salable 2.0 monetization with a split path:
+Design Salable monetization with a split path:
 - MCP for catalog provisioning writes.
 - REST for runtime app surfaces.
 
 ## Sources
 
 - Primary contracts: `references/openapi.yaml`
-- Hosted refresh source: `https://beta.salable.app/openapi.yaml`
+- Hosted refresh source: `https://salable.app/openapi.yaml`
 - Runtime endpoint focus: `references/openapi-focus.md`
 - MCP patterns: `references/mcp-tool-playbook.md`
 - Pricing payload patterns: `references/pricing-model-templates.md`
 - Auth recommendations: `references/auth-options.md`
 
-At the start of every new session, fetch `https://beta.salable.app/openapi.yaml` and refresh `references/openapi.yaml` before implementation work. If hosted fetch is unavailable, continue with local references and state this assumption.
+At the start of every new session, fetch `https://salable.app/openapi.yaml` and refresh `references/openapi.yaml` before implementation work. If hosted fetch is unavailable, continue with local references and state this assumption.
 
 ## Hard Rules
 
-- Use only `beta.salable.app` contracts.
+- Use only `salable.app` contracts.
 - Before provisioning, verify `mcp__salable__*` tools are available.
 - If MCP is unavailable, stop and instruct user to set `SALABLE_API_KEY` and restart Codex.
 - Never use raw email in identity fields (`owner`, `grantee`, `granteeId`).
@@ -42,7 +42,7 @@ When asked to monetize/monetise an app or product, deliver:
 
 - Confirm app auth exists and identify non-email billing principal source (`org/tenant id` -> internal account/user id -> non-email `user.id`).
 - If only email exists, derive deterministic non-email IDs with salted hash/HMAC and use consistently.
-- Verify runtime config: `SALABLE_SECRET_KEY`, `SALABLE_API_BASE_URL=https://beta.salable.app`, `SALABLE_PRODUCT_ID`, and required plan ID env vars used by the app.
+- Verify runtime config: `SALABLE_SECRET_KEY`, `SALABLE_API_BASE_URL=https://salable.app`, `SALABLE_PRODUCT_ID`, and required plan ID env vars used by the app.
 - If auth is missing or unclear, stop and return stack-specific auth recommendations (Auth.js first for Next.js).
 
 ## Provisioning Workflow
